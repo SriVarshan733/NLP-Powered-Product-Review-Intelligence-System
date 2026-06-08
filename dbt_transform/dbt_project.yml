@@ -1,0 +1,17 @@
+name: 'nlp_review_intelligence'
+version: '1.0.0'
+config-version: 2
+
+profile: 'bigquery_profile'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+
+models:
+  nlp_review_intelligence:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

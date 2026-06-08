@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: your_gcp_project_id  # Replace with your actual GCP Project ID
+    schema: nlp_review_intelligence
+    tables:
+      - name: raw_reviews
+
+models:
+  - name: stg_reviews
+    description: "Staging table for raw user reviews scraped and pushed to BigQuery. Basic data casting applied."
+    columns:
+      - name: review_id
+        description: "The primary key for this review record."
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+
+  - name: fct_review_insights
+    description: "Final core analytical fact table housing preprocessed reviews, user ratings, and manual sentiment tiers for downstream BI consumption."
+    columns:
+      - name: review_id
+        tests:
+          - unique
+          - not_null

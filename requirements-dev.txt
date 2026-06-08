@@ -1,0 +1,10 @@
+pandas
+spacy
+google-cloud-bigquery
+transformers
+torch
+datasets
+scikit-learn
+bertopic
+sentence-transformers
+dbt-bigquery
